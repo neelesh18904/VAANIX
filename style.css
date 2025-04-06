@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    background-image: url(Leonardo_Phoenix_A_visually_captivating_hightech_background_fo_3-1.jpg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    position: relative;
+    font-family:Roboto;
+}
+
+.container {
+    background-color:rgba(0, 0, 0, 0.8);
+    padding: 40px;
+    border-radius: 10px;
+    position: absolute;
+    left: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 15px;
+    
+}
+.container h1 {
+    font-size: 50px;
+    font-weight: 900;
+    letter-spacing: 4px;
+    
+}
+button {
+    padding: 15px 25px;
+    border-radius: 10px;
+    border: none;
+    background-color: #4caf50; /* Green color */
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+    box-shadow: 0 0 15px rgba(76, 175, 80, 0.8), 0 0 25px rgba(76, 175, 80, 0.6);
+    transform: scale(.9);
+}
