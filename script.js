@@ -32,7 +32,7 @@ btn.addEventListener("click", () => {
     function handleCommands(command) {
         let url = "";
 
-        // Weather command: "what's the weather in", "weather in", etc.
+        // Weather intent
         const weatherMatch = command.match(/(?:what's the weather in|weather in|temperature in)\s(.+)/i);
         if (weatherMatch && weatherMatch[1]) {
             const city = weatherMatch[1].trim();
@@ -41,32 +41,31 @@ btn.addEventListener("click", () => {
             return;
         }
 
-        if (command.includes("open youtube")) {
-            speak("Opening YouTube...");
-            url = "https://www.youtube.com";
-        } else if (command.includes("open facebook")) {
-            speak("Opening Facebook...");
-            url = "https://www.facebook.com";
-        } else if (command.includes("open google")) {
-            speak("Opening Google...");
-            url = "https://www.google.com";
-        } else if (command.includes("open github")) {
-            speak("Opening Github...");
-            url = "https://www.github.com";
-        } else if (command.includes("open chatgpt")) {
-            speak("Opening ChatGPT...");
-            url = "https://chat.openai.com";
-        } else if (command.includes("open whatsapp")) {
-            speak("Opening WhatsApp...");
-            url = "https://whatsapp.com";
-        } else if (command.includes("open instagram")) {
-            speak("Opening Instagram...");
-            url = "https://instagram.com";
-        } else if (command.includes("open deepseek")) {
-            speak("Opening Deepseek...");
-            url = "https://deepseek.com";
+        // Direct commands for specific websites
+        const predefinedSites = {
+            "youtube": "https://www.youtube.com",
+            "facebook": "https://www.facebook.com",
+            "google": "https://www.google.com",
+            "github": "https://www.github.com",
+            "chatgpt": "https://chat.openai.com",
+            "whatsapp": "https://www.whatsapp.com",
+            "instagram": "https://www.instagram.com",
+            "deepseek": "https://deepseek.com"
+        };
+
+        // Match "open something"
+        const openMatch = command.match(/open\s(.+)/i);
+        if (openMatch && openMatch[1]) {
+            const siteName = openMatch[1].trim().toLowerCase().replace(/\s/g, '');
+            if (predefinedSites[siteName]) {
+                speak(`Opening ${siteName}`);
+                url = predefinedSites[siteName];
+            } else {
+                speak(`Opening ${siteName}`);
+                url = `https://${siteName}.com`;
+            }
         } else {
-            speak("I am searching for that on Google...");
+            speak("I am searching that on Google...");
             url = `https://www.google.com/search?q=${encodeURIComponent(command)}`;
         }
 
